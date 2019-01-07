@@ -23,11 +23,16 @@ $rules = [
         'Oro\Bundle\PimDataGridBundle',
         // TODO: dependencies related to the front end, remove twig screens
         'Twig_SimpleFunction', // used by the category tree
+        'Akeneo\Platform\Bundle\UIBundle\Provider\Form\FormProviderInterface',
+
+        // TIP-1009: Remove TranslatedLabelsProviderInterface from Platform
+        'Akeneo\Platform\Bundle\UIBundle\Provider\TranslatedLabelsProviderInterface',
+
+        // TIP-1005: Clean UI form types
         'Akeneo\Platform\Bundle\UIBundle\Form\Type\ObjectIdentifierType',
         'Akeneo\Platform\Bundle\UIBundle\Form\Type\TranslatableFieldType',
         'Akeneo\Platform\Bundle\UIBundle\Form\Subscriber\DisableFieldSubscriber',
-        'Akeneo\Platform\Bundle\UIBundle\Provider\Form\FormProviderInterface',
-        'Akeneo\Platform\Bundle\UIBundle\Provider\TranslatedLabelsProviderInterface',
+
         // TODO: EASY PICK! it should be registered in the structure bundle
         'Akeneo\Pim\Structure\Bundle\DependencyInjection\Compiler\RegisterAttributeTypePass',
 
@@ -88,8 +93,10 @@ $rules = [
         'Akeneo\Platform\Bundle\UIBundle\Provider\StructureVersion\StructureVersionProviderInterface',
         // TODO: widget discussion
         'Akeneo\Platform\Bundle\DashboardBundle\Widget\WidgetInterface',
-        // TODO: remove Flash\Message in CategoryTreeController
+
+        // TIP-1014: Do not use custom Flash Messages
         'Akeneo\Platform\Bundle\UIBundle\Flash\Message',
+
         // TODO: used in ProductCommentController to retrieve current locale => frontend or not discussion for "contextual" parameters
         'Akeneo\Platform\Bundle\UIBundle\Resolver\LocaleResolver',
     ])->in('Akeneo\Pim\Enrichment\Bundle'),
@@ -169,12 +176,19 @@ $rules = [
         'Akeneo\Pim\Enrichment\Bundle\Filter\ObjectFilterInterface',
         'Akeneo\Pim\Enrichment\Bundle\Filter\CollectionFilterInterface',
 
-        // TODO a component should not rely on a bundle
+
+        // TIP-1012: Create a Measure component
         'Akeneo\Tool\Bundle\MeasureBundle\Convert\MeasureConverter',
         'Akeneo\Tool\Bundle\MeasureBundle\Exception\MeasureException',
         'Akeneo\Tool\Bundle\MeasureBundle\Manager\MeasureManager',
+
         // TODO: EASY PICK! a component should not rely a concrete implementation => use the right repo interface
         'Doctrine\ORM\EntityRepository',
+
+        // TIP-939: Remove filter system for permissions
+        'Akeneo\Pim\Enrichment\Bundle\Filter\ObjectFilterInterface',
+        'Akeneo\Pim\Enrichment\Bundle\Filter\CollectionFilterInterface',
+
         // TODO it should only be used in the bundle (security, used to check if granted to ACL)
         'Oro\Bundle\SecurityBundle\SecurityFacade',
         // TODO normalization for front end purpose
@@ -185,8 +199,12 @@ $rules = [
         'Akeneo\UserManagement\Bundle\Context\UserContext',
         // TODO: is ProductMassActionRepositoryInterface still used?
         'Oro\Bundle\PimDataGridBundle\Doctrine\ORM\Repository\MassActionRepositoryInterface',
-        // TODO: a component should not use a bundle
+
+        // TIP-1011: Create a Versioning component
         'Akeneo\Tool\Bundle\VersioningBundle\Manager\VersionManager',
+
+        // TODO: extract from ValidMetric the enrichment part
+        'Akeneo\Pim\Structure\Component\Validator\Constraints\ValidMetric',
         // TODO: should not have a contextual service
         'Akeneo\Pim\Enrichment\Bundle\Context\CatalogContext',
         // TODO: EASY PICK! move JobLauncherInterface to component
