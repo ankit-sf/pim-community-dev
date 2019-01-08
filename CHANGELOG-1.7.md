@@ -1,5 +1,9 @@
 # 1.7.x
 
+## Bug fixes
+
+- PIM-7957: Fix dependencies for doctrine
+
 # 1.7.36 (2018-12-11)
 
 ## Bug fixes
